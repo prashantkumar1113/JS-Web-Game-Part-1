@@ -1,44 +1,38 @@
-function addImgToScreen(src, position, left, bottom) {
+function newImage(src, position, left, bottom) {
     let element = document.createElement("img");
     element.src = src;
     element.style.position = position;
     element.style.left = left;
     element.style.bottom = bottom;
-    // document.body.append(element);
-    return element;
+    document.body.append(element);
+
+    return element; //returns the element if needed
 }
 
-let greenChar = addImgToScreen(
-    "assets/green-character.gif",
-    "fixed",
-    "100px",
-    "100px"
-);
-document.body.append(greenChar);
+function newItem(src, position, left, bottom) {
+    let element = newImage(src, position, left, bottom);
 
-let pineTree = addImgToScreen(
-    "assets/pine-tree.png",
-    "fixed",
-    "450px",
-    "200px"
-);
-document.body.append(pineTree);
+    element.addEventListener("dblclick", function () {
+        element.remove();
+    });
 
-let tree = addImgToScreen("assets/tree.png", "fixed", "200px", "300px");
-document.body.append(tree);
+    return element; //returns the element if needed
+}
 
-let pillar = addImgToScreen("assets/pillar.png", "fixed", "350px", "100px");
-document.body.append(pillar);
+newImage("assets/green-character.gif", "fixed", "100px", "100px");
 
-let crate = addImgToScreen("assets/crate.png", "fixed", "150px", "200px");
-document.body.append(crate);
+newImage("assets/pine-tree.png", "fixed", "450px", "200px");
 
-let well = addImgToScreen("assets/well.png", "fixed", "500px", "425px");
-document.body.append(well);
+newImage("assets/tree.png", "fixed", "200px", "300px");
 
-let sword = addImgToScreen("assets/sword.png", "fixed", "500px", "405px");
-document.body.append(sword);
+newImage("assets/pillar.png", "fixed", "350px", "100px");
 
-sword.addEventListener("click", function () {
-    sword.remove();
-});
+newImage("assets/crate.png", "fixed", "150px", "200px");
+
+newImage("assets/well.png", "fixed", "500px", "425px");
+
+newItem("assets/sword.png", "fixed", "500px", "405px");
+
+newItem("assets/sheild.png", "fixed", "165px", "185px");
+
+newItem("assets/staff.png", "fixed", "600px", "100px");

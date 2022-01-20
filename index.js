@@ -13,8 +13,15 @@ function newItem(src, position, left, bottom) {
 
     element.addEventListener("dblclick", function () {
         element.remove();
+        addInventory(src);
     });
     return element; //returns the element if needed
+}
+
+function addInventory(url) {
+    let inventoryItem = document.createElement("img");
+    inventoryItem.src = url;
+    inventory.append(inventoryItem);
 }
 
 //Background
@@ -26,6 +33,26 @@ for (let i = 0; i < window.innerWidth; i = i + 100) {
     newImage("assets/grass.png", left, "300px");
     newImage("assets/grass.png", left, "400px");
 }
+
+//Inventory area
+function newInventory() {
+    let inventory = document.createElement("div");
+    inventory.style.position = "fixed";
+    inventory.style.bottom = "0px";
+    inventory.style.left = "0px";
+    inventory.style.width = "100%";
+    inventory.style.height = "90px";
+    inventory.style.display = "flex";
+    inventory.style.flexDirection = "row";
+    inventory.style.alignItems = "center";
+    inventory.style.justifyContent = "space-evenly";
+    inventory.style.border = "2px solid black";
+    inventory.style.backgroundColor = "brown";
+    document.body.append(inventory);
+    return inventory;
+}
+
+let inventory = newInventory();
 
 //New Images
 newImage("assets/green-character.gif", "100px", "100px");
